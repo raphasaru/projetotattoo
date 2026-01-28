@@ -1,0 +1,373 @@
+---
+const benefits = [
+  "Pega na máquina desde o primeiro dia",
+  "Tatua 4 pessoas REAIS durante o curso",
+  "Sai com portfólio pronto pra começar a cobrar",
+  "Entra numa comunidade de +5.000 tatuadores"
+];
+
+const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!%20Vim%20do%20site%20e%20quero%20saber%20mais%20sobre%20o%20curso%20de%20tatuagem";
+---
+
+<section class="transform-section section">
+  <div class="container">
+    <div class="transform-grid">
+      <div class="transform-visual">
+        <div class="visual-container">
+          <!-- Before/After concept -->
+          <div class="before-after">
+            <div class="state before">
+              <span class="state-label">Hoje</span>
+              <div class="state-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+              </div>
+              <span class="state-text">Preso ao computador</span>
+            </div>
+
+            <div class="arrow-container">
+              <svg class="transform-arrow" viewBox="0 0 100 24">
+                <defs>
+                  <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#C9A962"/>
+                    <stop offset="100%" style="stop-color:#22C55E"/>
+                  </linearGradient>
+                </defs>
+                <line x1="0" y1="12" x2="85" y2="12" stroke="url(#arrowGrad)" stroke-width="2"/>
+                <polygon points="85,6 100,12 85,18" fill="#22C55E"/>
+              </svg>
+              <span class="days-badge">30 dias</span>
+            </div>
+
+            <div class="state after">
+              <span class="state-label">Em breve</span>
+              <div class="state-icon active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                  <path d="M2 17l10 5 10-5"/>
+                  <path d="M2 12l10 5 10-5"/>
+                </svg>
+              </div>
+              <span class="state-text">Vivendo de arte</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="transform-content">
+        <h2 class="transform-headline">
+          E se eu te dissesse que em <span class="highlight-box">30 dias</span> você pode estar tatuando de verdade?
+        </h2>
+
+        <div class="transform-intro">
+          <p>Não estou falando de cursos online infinitos que você nunca termina.</p>
+          <p>Não estou falando de "aprender um dia" quando tiver tempo.</p>
+          <p class="intro-emphasis">Estou falando de <strong>40 horas de imersão presencial</strong> onde você:</p>
+        </div>
+
+        <ul class="benefits-list">
+          {benefits.map((benefit, index) => (
+            <li class="benefit-item" style={`--delay: ${index * 0.1}s`}>
+              <span class="benefit-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12"/>
+                </svg>
+              </span>
+              <span class="benefit-text">{benefit}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="transform-cta">
+          <p class="cta-context">
+            Isso é o <strong>Projeto Tattoo</strong>. 12 anos formando artistas que hoje vivem exclusivamente de tatuagem.
+          </p>
+          <a href={whatsappLink} target="_blank" rel="noopener" class="cta-button secondary">
+            <span>Quero conhecer o método</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .transform-section {
+    background: var(--black-light);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .transform-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .transform-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  /* Visual side */
+  .transform-visual {
+    position: relative;
+  }
+
+  .visual-container {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(201, 169, 98, 0.2);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+  }
+
+  .before-after {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .state-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--white-dim);
+  }
+
+  .state-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--white-dim);
+    transition: all 0.3s ease;
+  }
+
+  .state-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .state-icon.active {
+    background: rgba(34, 197, 94, 0.1);
+    border-color: var(--green);
+    color: var(--green);
+    box-shadow: 0 0 30px rgba(34, 197, 94, 0.2);
+  }
+
+  .state-text {
+    font-size: 0.85rem;
+    color: var(--white);
+    text-align: center;
+  }
+
+  .arrow-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .transform-arrow {
+    width: 100%;
+    max-width: 100px;
+  }
+
+  .days-badge {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Content side */
+  .transform-content {
+    position: relative;
+  }
+
+  .transform-headline {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .highlight-box {
+    display: inline-block;
+    background: var(--green);
+    color: var(--white);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+  }
+
+  .transform-intro {
+    margin-bottom: 2rem;
+  }
+
+  .transform-intro p {
+    color: var(--white-dim);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .intro-emphasis {
+    color: var(--white) !important;
+    margin-top: 1rem !important;
+  }
+
+  .benefits-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.15);
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateX(-10px);
+    animation: slideIn 0.5s ease-out var(--delay) forwards;
+  }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .benefit-check {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--green);
+    border-radius: 50%;
+    color: var(--white);
+  }
+
+  .benefit-check svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .benefit-text {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .transform-cta {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .cta-context {
+    color: var(--white-dim);
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .cta-context strong {
+    color: var(--gold);
+  }
+
+  .cta-button.secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.75rem;
+    background: transparent;
+    border: 2px solid var(--gold);
+    color: var(--gold);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button.secondary:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  .cta-button.secondary svg {
+    transition: transform 0.3s ease;
+  }
+
+  .cta-button.secondary:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .transform-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .transform-visual {
+      order: 2;
+    }
+
+    .transform-content {
+      order: 1;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .before-after {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .arrow-container {
+      transform: rotate(90deg);
+    }
+
+    .days-badge {
+      transform: rotate(-90deg);
+    }
+
+    .cta-button.secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

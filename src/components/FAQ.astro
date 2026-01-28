@@ -1,0 +1,207 @@
+---
+const faqs = [
+  {
+    question: "Preciso ter experiência prévia?",
+    answer: "Não! 70% dos nossos alunos nunca tatuaram nem desenharam antes. O curso foi desenvolvido para quem está começando do zero absoluto."
+  },
+  {
+    question: "Quanto tempo dura o curso?",
+    answer: "São 40 horas de imersão distribuídas em aproximadamente 1 mês, com aulas presenciais intensivas. O formato pode variar de acordo com a unidade."
+  },
+  {
+    question: "Vou tatuar pessoas de verdade?",
+    answer: "Sim! Durante o curso você realiza 4 tatuagens em voluntários reais, não apenas em pele sintética. Isso é fundamental para sua formação."
+  },
+  {
+    question: "Recebo certificado?",
+    answer: "Sim, você recebe certificado de conclusão reconhecido, com 12 anos de tradição no mercado de tatuagem."
+  },
+  {
+    question: "Como funciona o pagamento?",
+    answer: "Oferecemos parcelamento em até 12x no cartão de crédito. Fale conosco no WhatsApp para saber as condições atuais e possíveis descontos."
+  },
+  {
+    question: "E se eu não gostar do curso?",
+    answer: "Oferecemos garantia de satisfação. Se nas primeiras aulas você sentir que não é pra você, devolvemos seu investimento integralmente."
+  },
+  {
+    question: "Vocês fornecem os materiais?",
+    answer: "Sim! Kit completo de materiais está incluso no curso. Você não precisa comprar nada adicional para as aulas práticas."
+  },
+  {
+    question: "Como funciona a comunidade de alunos?",
+    answer: "Ao se formar, você ganha acesso vitalício à nossa comunidade com mais de 5.000 tatuadores. Lá você pode tirar dúvidas, trocar experiências e participar de lives mensais exclusivas."
+  }
+];
+---
+
+<section class="faq-section section">
+  <div class="container">
+    <div class="faq-header">
+      <span class="section-label">Perguntas frequentes</span>
+      <h2 class="faq-title">Tire suas dúvidas</h2>
+    </div>
+
+    <div class="faq-list">
+      {faqs.map((faq, index) => (
+        <details class="faq-item" style={`--delay: ${index * 0.05}s`}>
+          <summary class="faq-question">
+            <span class="question-number">{String(index + 1).padStart(2, '0')}</span>
+            <span class="question-text">{faq.question}</span>
+            <span class="question-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-answer">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    background: var(--black-light);
+    position: relative;
+  }
+
+  .faq-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .faq-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase;
+  }
+
+  /* FAQ List */
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .faq-item {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInUp 0.5s ease-out var(--delay) forwards;
+    transition: all 0.3s ease;
+  }
+
+  .faq-item:hover {
+    border-color: rgba(201, 169, 98, 0.2);
+  }
+
+  .faq-item[open] {
+    border-color: var(--gold);
+    background: rgba(201, 169, 98, 0.05);
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .faq-question::-webkit-details-marker {
+    display: none;
+  }
+
+  .question-number {
+    flex-shrink: 0;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--gold);
+    opacity: 0.5;
+  }
+
+  .question-text {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  .question-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    transition: transform 0.3s ease;
+  }
+
+  .question-icon svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-item[open] .question-icon svg {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    padding: 0 1.5rem 1.5rem;
+    padding-left: calc(1.5rem + 1rem + 2ch);
+  }
+
+  .faq-answer p {
+    color: var(--white-dim);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .faq-question {
+      padding: 1.25rem;
+    }
+
+    .question-number {
+      display: none;
+    }
+
+    .faq-answer {
+      padding-left: 1.25rem;
+    }
+  }
+</style>

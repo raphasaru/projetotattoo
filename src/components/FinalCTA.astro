@@ -1,0 +1,288 @@
+---
+const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!%20Quero%20garantir%20minha%20vaga%20no%20curso%20de%20tatuagem";
+---
+
+<section class="final-cta-section">
+  <div class="cta-background">
+    <div class="ink-splash-1"></div>
+    <div class="ink-splash-2"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <div class="container">
+    <div class="cta-content">
+      <span class="urgency-badge">
+        <span class="pulse-dot"></span>
+        Últimas vagas disponíveis
+      </span>
+
+      <h2 class="cta-headline">
+        Sua transformação<br/>
+        <span class="highlight">começa com uma decisão</span>
+      </h2>
+
+      <p class="cta-subtext">
+        Turmas limitadas a <strong>12 alunos</strong> para garantir atenção individual.<br/>
+        Não deixe para depois o que pode mudar sua vida agora.
+      </p>
+
+      <div class="cta-features">
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>40h de imersão</span>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>4 tattoos reais</span>
+        </div>
+        <div class="feature">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <span>Certificado incluso</span>
+        </div>
+      </div>
+
+      <a href={whatsappLink} target="_blank" rel="noopener" class="cta-button-main">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <span class="button-text">Garantir minha vaga agora</span>
+        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+
+      <p class="cta-note">Fale com nosso time e tire todas as suas dúvidas — sem compromisso</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta-section {
+    position: relative;
+    padding: clamp(5rem, 12vw, 10rem) 0;
+    overflow: hidden;
+  }
+
+  /* Background */
+  .cta-background {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--black) 0%, #0d1a0d 50%, var(--black) 100%);
+  }
+
+  .ink-splash-1 {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 60%);
+    top: -200px;
+    right: -200px;
+    filter: blur(80px);
+    animation: float 10s ease-in-out infinite;
+  }
+
+  .ink-splash-2 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(201, 169, 98, 0.1) 0%, transparent 60%);
+    bottom: -150px;
+    left: -150px;
+    filter: blur(80px);
+    animation: float 8s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(20px, -20px); }
+  }
+
+  .grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(34, 197, 94, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* Content */
+  .cta-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .urgency-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 100px;
+    color: var(--red);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  }
+
+  .pulse-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--red);
+    border-radius: 50%;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .cta-headline {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .highlight {
+    color: var(--green);
+    display: block;
+  }
+
+  .cta-subtext {
+    font-size: 1.1rem;
+    color: var(--white-dim);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .cta-subtext strong {
+    color: var(--white);
+  }
+
+  /* Features */
+  .cta-features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--white-dim);
+    font-size: 0.9rem;
+  }
+
+  .feature svg {
+    width: 20px;
+    height: 20px;
+    color: var(--green);
+  }
+
+  /* Main CTA Button */
+  .cta-button-main {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.5rem 3rem;
+    background: linear-gradient(135deg, var(--green) 0%, #16a34a 100%);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(34, 197, 94, 0.3);
+  }
+
+  .cta-button-main::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .cta-button-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 50px rgba(34, 197, 94, 0.4);
+  }
+
+  .cta-button-main:hover::before {
+    left: 100%;
+  }
+
+  .whatsapp-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .arrow-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .cta-button-main:hover .arrow-icon {
+    transform: translateX(4px);
+  }
+
+  .cta-note {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--white-dim);
+    opacity: 0.7;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .cta-features {
+      gap: 1rem;
+    }
+
+    .feature {
+      font-size: 0.8rem;
+    }
+
+    .cta-button-main {
+      width: 100%;
+      padding: 1.25rem 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cta-features {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+</style>

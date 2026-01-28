@@ -1,0 +1,452 @@
+---
+const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!%20Quero%20saber%20as%20condições%20de%20pagamento%20do%20curso";
+---
+
+<section class="investment-section section">
+  <div class="container">
+    <div class="investment-header">
+      <span class="section-label">Viabilidade financeira</span>
+      <h2 class="investment-title">O investimento que se paga rápido</h2>
+    </div>
+
+    <div class="investment-grid">
+      <!-- Calculator Card -->
+      <div class="calculator-card">
+        <h3 class="card-title">Quanto um tatuador iniciante cobra</h3>
+
+        <div class="calc-row">
+          <span class="calc-label">Tatuagem pequena</span>
+          <span class="calc-value">R$ 150 - R$ 300</span>
+        </div>
+
+        <div class="calc-divider">
+          <span class="divider-text">multiplicado por</span>
+        </div>
+
+        <div class="calc-row">
+          <span class="calc-label">Tatuagens por semana</span>
+          <span class="calc-value">3 tattoos</span>
+        </div>
+
+        <div class="calc-divider">
+          <span class="divider-text">igual a</span>
+        </div>
+
+        <div class="calc-result">
+          <span class="result-label">Potencial mensal</span>
+          <span class="result-range">
+            <span class="currency">R$</span>
+            <span class="amount">1.800</span>
+            <span class="separator">a</span>
+            <span class="currency">R$</span>
+            <span class="amount">3.600</span>
+          </span>
+          <span class="result-period">por mês</span>
+        </div>
+      </div>
+
+      <!-- Projection Card -->
+      <div class="projection-card">
+        <h3 class="card-title">Sua evolução ao longo do tempo</h3>
+
+        <div class="timeline-projection">
+          <div class="projection-item">
+            <div class="projection-marker">
+              <span class="marker-dot"></span>
+              <span class="marker-line"></span>
+            </div>
+            <div class="projection-content">
+              <span class="projection-time">Mês 1-2</span>
+              <span class="projection-desc">Primeiras tatuagens, construindo portfólio</span>
+              <span class="projection-value">R$ 500 - R$ 1.500</span>
+            </div>
+          </div>
+
+          <div class="projection-item">
+            <div class="projection-marker">
+              <span class="marker-dot"></span>
+              <span class="marker-line"></span>
+            </div>
+            <div class="projection-content">
+              <span class="projection-time">Mês 3-4</span>
+              <span class="projection-desc">Clientes recorrentes, indicações</span>
+              <span class="projection-value">R$ 2.000 - R$ 4.000</span>
+            </div>
+          </div>
+
+          <div class="projection-item">
+            <div class="projection-marker">
+              <span class="marker-dot active"></span>
+            </div>
+            <div class="projection-content">
+              <span class="projection-time">6 meses+</span>
+              <span class="projection-desc">Agenda consolidada, preços ajustados</span>
+              <span class="projection-value highlight">R$ 5.000 - R$ 10.000</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="projection-note">* Valores baseados em relatos reais de alunos formados</p>
+      </div>
+    </div>
+
+    <div class="investment-cta">
+      <div class="cta-content">
+        <p class="cta-text">
+          Não vendemos promessas.<br/>
+          <strong>Vendemos transformação real.</strong>
+        </p>
+        <a href={whatsappLink} target="_blank" rel="noopener" class="cta-button">
+          <span>Quero saber as condições</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background decoration -->
+  <div class="bg-pattern"></div>
+</section>
+
+<style>
+  .investment-section {
+    background: linear-gradient(180deg, var(--black-light) 0%, var(--black) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .investment-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .investment-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .investment-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase;
+  }
+
+  /* Grid */
+  .investment-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  /* Calculator Card */
+  .calculator-card,
+  .projection-card {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(201, 169, 98, 0.2);
+    border-radius: 20px;
+    padding: 2.5rem;
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    color: var(--gold);
+  }
+
+  .calc-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .calc-label {
+    color: var(--white-dim);
+    font-size: 1rem;
+  }
+
+  .calc-value {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--white);
+  }
+
+  .calc-divider {
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .calc-divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .divider-text {
+    position: relative;
+    background: var(--black-light);
+    padding: 0 1rem;
+    font-size: 0.75rem;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .calc-result {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .result-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--green);
+    margin-bottom: 0.5rem;
+  }
+
+  .result-range {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .currency {
+    font-size: 1rem;
+    color: var(--white-dim);
+  }
+
+  .amount {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--green);
+  }
+
+  .separator {
+    font-size: 1rem;
+    color: var(--white-dim);
+  }
+
+  .result-period {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--white-dim);
+    margin-top: 0.25rem;
+  }
+
+  /* Projection Card */
+  .timeline-projection {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .projection-item {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+  }
+
+  .projection-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .marker-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--black-lighter);
+    border: 2px solid var(--gold);
+    flex-shrink: 0;
+  }
+
+  .marker-dot.active {
+    background: var(--green);
+    border-color: var(--green);
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+  }
+
+  .marker-line {
+    flex: 1;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), rgba(201, 169, 98, 0.2));
+    margin-top: 0.5rem;
+    min-height: 40px;
+  }
+
+  .projection-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    flex: 1;
+  }
+
+  .projection-time {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .projection-desc {
+    font-size: 0.9rem;
+    color: var(--white-dim);
+  }
+
+  .projection-value {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--white);
+  }
+
+  .projection-value.highlight {
+    color: var(--green);
+    font-size: 1.5rem;
+  }
+
+  .projection-note {
+    font-size: 0.75rem;
+    color: var(--white-dim);
+    opacity: 0.6;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* CTA */
+  .investment-cta {
+    text-align: center;
+  }
+
+  .cta-content {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem 3rem;
+    background: rgba(201, 169, 98, 0.05);
+    border: 1px solid rgba(201, 169, 98, 0.2);
+    border-radius: 16px;
+  }
+
+  .cta-text {
+    font-size: 1.1rem;
+    color: var(--white-dim);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .cta-text strong {
+    color: var(--gold);
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 2.5rem;
+    background: var(--green);
+    color: var(--white);
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+  }
+
+  .cta-button svg {
+    transition: transform 0.3s ease;
+  }
+
+  .cta-button:hover svg {
+    transform: translateX(4px);
+  }
+
+  /* Background pattern */
+  .bg-pattern {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-image: radial-gradient(circle at 2px 2px, rgba(201, 169, 98, 0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .investment-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .calculator-card,
+    .projection-card {
+      padding: 1.5rem;
+    }
+
+    .cta-content {
+      padding: 1.5rem;
+      width: 100%;
+    }
+
+    .cta-button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .result-range {
+      flex-wrap: wrap;
+    }
+
+    .amount {
+      font-size: 2rem;
+    }
+  }
+</style>

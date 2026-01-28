@@ -1,0 +1,276 @@
+---
+const stats = [
+  { number: "12", label: "Anos", suffix: "", description: "de tradição" },
+  { number: "5", label: "Mil", suffix: "+", description: "alunos formados" },
+  { number: "5", label: "Mi", suffix: "+", description: "views no YouTube" },
+  { number: "156", label: "Mil", suffix: "+", description: "seguidores" },
+  { number: "7", label: "Países", suffix: "", description: "com alunos atuando" }
+];
+---
+
+<section class="social-proof section">
+  <div class="container">
+    <div class="proof-header">
+      <h2 class="proof-title">Os números não mentem</h2>
+      <p class="proof-subtitle">Do Japão a Portugal, do Brasil aos EUA — nossos alunos estão por todo o mundo vivendo de arte.</p>
+    </div>
+
+    <div class="stats-grid">
+      {stats.map((stat, index) => (
+        <div class="stat-card" style={`--delay: ${index * 0.1}s`}>
+          <div class="stat-glow"></div>
+          <div class="stat-content">
+            <div class="stat-number-wrapper">
+              <span class="stat-prefix">{stat.suffix && stat.suffix}</span>
+              <span class="stat-number" data-value={stat.number}>{stat.number}</span>
+              <span class="stat-label-inline">{stat.label}</span>
+            </div>
+            <span class="stat-description">{stat.description}</span>
+          </div>
+          <div class="stat-decoration"></div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Trust badges -->
+    <div class="trust-badges">
+      <div class="badge-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        <span>Certificado reconhecido</span>
+      </div>
+      <div class="badge-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6v6l4 2"/>
+        </svg>
+        <span>Suporte vitalício</span>
+      </div>
+      <div class="badge-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span>Comunidade ativa</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background decorations -->
+  <div class="bg-lines">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+  </div>
+</section>
+
+<style>
+  .social-proof {
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .proof-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .proof-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .proof-subtitle {
+    color: var(--white-dim);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .stat-card {
+    position: relative;
+    background: var(--black-lighter);
+    border: 1px solid rgba(201, 169, 98, 0.15);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out var(--delay) forwards;
+    transition: all 0.4s ease;
+  }
+
+  .stat-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+  }
+
+  .stat-card:hover .stat-glow {
+    opacity: 1;
+  }
+
+  .stat-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(201, 169, 98, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .stat-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-number-wrapper {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-prefix {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--gold);
+  }
+
+  .stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-label-inline {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .stat-description {
+    font-size: 0.85rem;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .stat-decoration {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 80px;
+    height: 80px;
+    border: 1px solid rgba(201, 169, 98, 0.1);
+    border-radius: 50%;
+  }
+
+  /* Trust badges */
+  .trust-badges {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .badge-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--white-dim);
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  .badge-item:hover {
+    color: var(--gold);
+  }
+
+  .badge-item svg {
+    width: 24px;
+    height: 24px;
+    color: var(--gold);
+  }
+
+  /* Background lines */
+  .bg-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .line {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(201, 169, 98, 0.1), transparent);
+  }
+
+  .line:nth-child(1) { left: 20%; }
+  .line:nth-child(2) { left: 50%; }
+  .line:nth-child(3) { left: 80%; }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .stats-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat-card:nth-child(4),
+    .stat-card:nth-child(5) {
+      grid-column: span 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-card:last-child {
+      grid-column: span 2;
+    }
+
+    .trust-badges {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .stat-card:last-child {
+      grid-column: span 1;
+    }
+  }
+</style>

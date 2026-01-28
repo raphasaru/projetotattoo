@@ -1,0 +1,298 @@
+---
+const objections = [
+  {
+    objection: "Não sei desenhar",
+    answer: "70% dos nossos alunos nunca desenharam antes. Nós ensinamos técnicas específicas para tatuar — não é preciso ser artista para começar. Você vai aprender do zero.",
+    icon: "pencil"
+  },
+  {
+    objection: "Tenho medo de não conseguir",
+    answer: "Em 12 anos, temos taxa de conclusão de 97%. Nosso método foi criado para qualquer pessoa, independente do background. Se você quer, você consegue.",
+    icon: "shield"
+  },
+  {
+    objection: "É muito caro",
+    answer: "Nossos alunos recuperam o investimento em média nas primeiras 4 semanas tatuando. Oferecemos parcelamento facilitado e o retorno é rápido.",
+    icon: "wallet"
+  }
+];
+---
+
+<section class="objections-section section">
+  <div class="container">
+    <div class="objections-header">
+      <span class="section-label">Dúvidas comuns</span>
+      <h2 class="objections-title">
+        Ainda tem dúvidas?<br/>
+        <span class="gold">A gente entende.</span>
+      </h2>
+      <p class="objections-subtitle">Essas são as preocupações mais comuns de quem está pensando em começar:</p>
+    </div>
+
+    <div class="objections-list">
+      {objections.map((item, index) => (
+        <div class="objection-card" style={`--delay: ${index * 0.15}s`}>
+          <div class="objection-icon">
+            {item.icon === "pencil" && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18"/>
+                <path d="M2 2l7.586 7.586"/>
+              </svg>
+            )}
+            {item.icon === "shield" && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            )}
+            {item.icon === "wallet" && (
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <rect x="1" y="4" width="22" height="16" rx="2"/>
+                <path d="M1 10h22"/>
+              </svg>
+            )}
+          </div>
+
+          <div class="objection-content">
+            <div class="objection-question">
+              <span class="question-prefix">"</span>
+              <span class="question-text">{item.objection}</span>
+              <span class="question-suffix">"</span>
+            </div>
+
+            <div class="objection-answer">
+              <span class="answer-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </span>
+              <p class="answer-text">{item.answer}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="trust-statement">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <p class="trust-text">
+        Oferecemos <strong>garantia de satisfação</strong>. Se nas primeiras aulas você sentir que não é pra você, devolvemos seu investimento.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .objections-section {
+    background: linear-gradient(180deg, var(--black) 0%, var(--black-light) 100%);
+    position: relative;
+  }
+
+  .objections-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .objections-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .gold {
+    color: var(--gold);
+  }
+
+  .objections-subtitle {
+    color: var(--white-dim);
+    font-size: 1rem;
+  }
+
+  /* Objections List */
+  .objections-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+  }
+
+  .objection-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideIn 0.6s ease-out var(--delay) forwards;
+    transition: all 0.3s ease;
+  }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .objection-card:hover {
+    background: rgba(201, 169, 98, 0.05);
+    border-color: rgba(201, 169, 98, 0.2);
+  }
+
+  .objection-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(201, 169, 98, 0.1);
+    border-radius: 50%;
+    color: var(--gold);
+  }
+
+  .objection-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .objection-content {
+    flex: 1;
+  }
+
+  .objection-question {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 1rem;
+  }
+
+  .question-prefix,
+  .question-suffix {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--gold);
+    line-height: 1;
+    opacity: 0.5;
+  }
+
+  .question-text {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: var(--white);
+    margin: 0 0.25rem;
+  }
+
+  .objection-answer {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .answer-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--green);
+    margin-top: 0.2rem;
+  }
+
+  .answer-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .answer-text {
+    color: var(--white-dim);
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+
+  /* Trust Statement */
+  .trust-statement {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(34, 197, 94, 0.05);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .trust-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+  }
+
+  .trust-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .trust-text {
+    color: var(--white-dim);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .trust-text strong {
+    color: var(--green);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .objection-card {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+
+    .objection-question {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .objection-answer {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .trust-statement {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .question-text {
+      font-size: 1.25rem;
+    }
+  }
+</style>

@@ -1,0 +1,270 @@
+---
+const painPoints = [
+  {
+    icon: "window",
+    text: "Você já se pegou no trabalho, olhando pela janela, imaginando como seria viver fazendo o que ama?"
+  },
+  {
+    icon: "chart",
+    text: "Já sentiu inveja de quem trabalha com arte, enquanto você preenche planilhas sem fim?"
+  },
+  {
+    icon: "clock",
+    text: "Já teve medo de que a vida passe e você nunca descubra do que realmente é capaz?"
+  }
+];
+---
+
+<section class="pain-section section">
+  <div class="container">
+    <div class="pain-content">
+      <div class="pain-header">
+        <span class="section-label">A verdade que ninguém fala</span>
+        <h2 class="pain-headline">
+          A cada domingo à noite,<br/>
+          <span class="emphasis">aquele aperto no peito volta...</span>
+        </h2>
+      </div>
+
+      <div class="pain-list">
+        {painPoints.map((point, index) => (
+          <div class="pain-item" style={`--delay: ${index * 0.15}s`}>
+            <div class="pain-icon">
+              {point.icon === "window" && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="2"/>
+                  <line x1="3" y1="9" x2="21" y2="9"/>
+                  <line x1="9" y1="21" x2="9" y2="9"/>
+                </svg>
+              )}
+              {point.icon === "chart" && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M3 3v18h18"/>
+                  <path d="M18 17V9"/>
+                  <path d="M13 17V5"/>
+                  <path d="M8 17v-3"/>
+                </svg>
+              )}
+              {point.icon === "clock" && (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              )}
+            </div>
+            <p class="pain-text">{point.text}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="pain-closing">
+        <div class="closing-line"></div>
+        <p class="closing-text">
+          A verdade dura é: <strong>quanto mais você adia esse sonho, mais difícil fica ter coragem de começar.</strong>
+        </p>
+        <p class="closing-emphasis">E o tempo? Ele não espera ninguém.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative elements -->
+  <div class="ink-drip ink-drip-1"></div>
+  <div class="ink-drip ink-drip-2"></div>
+</section>
+
+<style>
+  .pain-section {
+    position: relative;
+    background: linear-gradient(180deg, var(--black) 0%, var(--black-light) 100%);
+    overflow: hidden;
+  }
+
+  .pain-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .pain-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+
+  .section-label::before {
+    right: calc(100% + 1rem);
+  }
+
+  .section-label::after {
+    left: calc(100% + 1rem);
+    background: linear-gradient(90deg, var(--gold), transparent);
+  }
+
+  .pain-headline {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  .emphasis {
+    color: var(--gold);
+    display: block;
+  }
+
+  /* Pain items */
+  .pain-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .pain-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateX(-20px);
+    animation: slideIn 0.6s ease-out var(--delay) forwards;
+  }
+
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .pain-item:hover {
+    background: rgba(201, 169, 98, 0.05);
+    border-color: rgba(201, 169, 98, 0.2);
+    transform: translateX(10px);
+  }
+
+  .pain-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(201, 169, 98, 0.1);
+    border-radius: 12px;
+    color: var(--gold);
+  }
+
+  .pain-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pain-text {
+    font-size: 1.1rem;
+    color: var(--white-dim);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* Closing */
+  .pain-closing {
+    text-align: center;
+    padding-top: 2rem;
+  }
+
+  .closing-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 2rem;
+  }
+
+  .closing-text {
+    font-size: 1.1rem;
+    color: var(--white-dim);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .closing-text strong {
+    color: var(--white);
+  }
+
+  .closing-emphasis {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Decorative ink drips */
+  .ink-drip {
+    position: absolute;
+    width: 3px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    opacity: 0.3;
+  }
+
+  .ink-drip-1 {
+    height: 200px;
+    top: 0;
+    left: 15%;
+    animation: drip 3s ease-in-out infinite;
+  }
+
+  .ink-drip-2 {
+    height: 150px;
+    top: 0;
+    right: 20%;
+    animation: drip 4s ease-in-out infinite 1s;
+  }
+
+  @keyframes drip {
+    0%, 100% {
+      opacity: 0.1;
+      transform: scaleY(0.8);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scaleY(1);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .pain-item {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+
+    .section-label::before,
+    .section-label::after {
+      display: none;
+    }
+  }
+</style>

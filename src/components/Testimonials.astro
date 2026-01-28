@@ -1,0 +1,298 @@
+---
+const testimonials = [
+  {
+    name: "Mariana Silva",
+    age: 28,
+    previousJob: "Ex-bancária",
+    quote: "Trabalhei 6 anos em banco odiando cada segundo. Hoje tenho meu próprio estúdio, faço meus horários e ganho 3x mais. O Projeto Tattoo mudou minha vida.",
+    result: "Studio próprio em SP",
+    earnings: "R$12.000/mês",
+    initials: "MS"
+  },
+  {
+    name: "Rafael Oliveira",
+    age: 34,
+    previousJob: "Ex-motorista de app",
+    quote: "Todo mundo disse que eu era louco de largar o emprego. 8 meses depois, fecho 15 tattoos por mês e trabalho de casa.",
+    result: "Tatuador autônomo",
+    earnings: "Agenda cheia 2 meses",
+    initials: "RO"
+  },
+  {
+    name: "Juliana Costa",
+    age: 22,
+    previousJob: "Recém-formada",
+    quote: "Fiz faculdade de administração e sabia que nunca iria usar. Encontrei no Projeto Tattoo o que a universidade nunca me deu: uma profissão que me faz feliz.",
+    result: "Especialista em fine line",
+    earnings: "Primeiro studio aos 23",
+    initials: "JC"
+  }
+];
+---
+
+<section class="testimonials-section section">
+  <div class="container">
+    <div class="testimonials-header">
+      <span class="section-label">Transformações reais</span>
+      <h2 class="testimonials-title">
+        Eles estavam onde você está.<br/>
+        <span class="gold">Veja onde chegaram.</span>
+      </h2>
+    </div>
+
+    <div class="testimonials-grid">
+      {testimonials.map((testimonial, index) => (
+        <article class="testimonial-card" style={`--delay: ${index * 0.15}s`}>
+          <div class="card-quote">
+            <svg class="quote-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+            <blockquote class="quote-text">{testimonial.quote}</blockquote>
+          </div>
+
+          <div class="card-author">
+            <div class="author-avatar" style={`--hue: ${index * 40}`}>
+              {testimonial.initials}
+            </div>
+            <div class="author-info">
+              <span class="author-name">{testimonial.name}</span>
+              <span class="author-previous">{testimonial.age} anos • {testimonial.previousJob}</span>
+            </div>
+          </div>
+
+          <div class="card-results">
+            <div class="result-item">
+              <span class="result-label">Hoje</span>
+              <span class="result-value">{testimonial.result}</span>
+            </div>
+            <div class="result-divider"></div>
+            <div class="result-item">
+              <span class="result-label">Conquista</span>
+              <span class="result-value highlight">{testimonial.earnings}</span>
+            </div>
+          </div>
+
+          <div class="card-decoration"></div>
+        </article>
+      ))}
+    </div>
+
+    <div class="testimonials-note">
+      <p>* Resultados reais de alunos. Resultados individuais podem variar de acordo com dedicação e mercado local.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials-section {
+    background: var(--black-light);
+    position: relative;
+  }
+
+  .testimonials-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .testimonials-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .testimonials-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .gold {
+    color: var(--gold);
+  }
+
+  /* Grid */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .testimonial-card {
+    background: var(--black);
+    border: 1px solid rgba(201, 169, 98, 0.15);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out var(--delay) forwards;
+    transition: all 0.4s ease;
+  }
+
+  .testimonial-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+  }
+
+  .testimonial-card:hover .card-decoration {
+    opacity: 0.1;
+  }
+
+  /* Quote */
+  .card-quote {
+    margin-bottom: 2rem;
+  }
+
+  .quote-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--gold);
+    opacity: 0.4;
+    margin-bottom: 1rem;
+  }
+
+  .quote-text {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--white-dim);
+    font-style: italic;
+  }
+
+  /* Author */
+  .card-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .author-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    background: linear-gradient(
+      135deg,
+      hsl(calc(40 + var(--hue)), 60%, 50%),
+      hsl(calc(60 + var(--hue)), 40%, 35%)
+    );
+    color: var(--white);
+  }
+
+  .author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .author-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--white);
+  }
+
+  .author-previous {
+    font-size: 0.85rem;
+    color: var(--white-dim);
+  }
+
+  /* Results */
+  .card-results {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .result-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .result-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--white-dim);
+  }
+
+  .result-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  .result-value.highlight {
+    color: var(--green);
+  }
+
+  .result-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* Decoration */
+  .card-decoration {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    opacity: 0.05;
+    transition: opacity 0.4s ease;
+  }
+
+  /* Note */
+  .testimonials-note {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .testimonials-note p {
+    font-size: 0.8rem;
+    color: var(--white-dim);
+    opacity: 0.6;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .testimonials-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .testimonials-grid {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+  }
+</style>
