@@ -17,14 +17,14 @@ const weeks = [
   {
     week: 3,
     title: "Aprofundamento",
-    description: "Diferentes estilos, composição e fluxo. Segunda e terceira tatuagens em voluntários",
+    description: "Diferentes estilos, composição e fluxo. Segunda tatuagem em voluntários",
     icon: "depth",
-    highlight: "2ª e 3ª tattoos"
+    highlight: "2ª tattoo"
   },
   {
     week: 4,
     title: "Profissionalização",
-    description: "Precificação, como conseguir clientes, 4ª tatuagem e certificado de conclusão",
+    description: "Precificação, como conseguir clientes e certificado de conclusão",
     icon: "pro",
     highlight: "Certificado"
   }
@@ -41,6 +41,17 @@ const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!
       <p class="method-subtitle">40 horas de imersão presencial com acompanhamento individual</p>
     </div>
 
+    <div class="method-photos">
+      <div class="method-photo">
+        <img src="/images/sala-unidade-campo-belo1.webp" alt="Sala de aula do Projeto Tattoo - unidade Campo Belo" loading="lazy" decoding="async" width="1080" height="810" />
+        <span class="photo-caption">Sala de aula</span>
+      </div>
+      <div class="method-photo">
+        <img src="/images/fachada-unidade-campo-belo.webp" alt="Fachada da unidade Campo Belo do Projeto Tattoo" loading="lazy" decoding="async" width="1080" height="810" />
+        <span class="photo-caption">Unidade Campo Belo</span>
+      </div>
+    </div>
+
     <div class="timeline">
       <div class="timeline-line"></div>
 
@@ -52,7 +63,6 @@ const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!
 
           <div class="timeline-content">
             <div class="content-header">
-              <span class="week-label">Semana {item.week}</span>
               <span class="week-highlight">{item.highlight}</span>
             </div>
 
@@ -96,7 +106,7 @@ const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!
       <div class="cta-box">
         <div class="cta-info">
           <span class="cta-badge">Próxima turma em breve</span>
-          <p class="cta-text">Turmas limitadas a <strong>12 alunos</strong> para garantir atenção individual</p>
+          <p class="cta-text">Turmas limitadas a <strong>8 alunos</strong> para garantir atenção individual</p>
         </div>
         <a href={whatsappLink} target="_blank" rel="noopener" class="cta-button">
           <span>Ver vagas disponíveis</span>
@@ -144,6 +154,41 @@ const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!
   .method-subtitle {
     color: var(--white-dim);
     font-size: 1.1rem;
+  }
+
+  .method-photos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto 5rem;
+  }
+
+  .method-photo {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 169, 98, 0.2);
+  }
+
+  .method-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem 1rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
   }
 
   /* Timeline */
@@ -334,6 +379,11 @@ const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!
 
   /* Responsive */
   @media (max-width: 768px) {
+    .method-photos {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+    }
+
     .timeline-line {
       left: 20px;
     }

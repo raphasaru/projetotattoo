@@ -77,6 +77,12 @@ const testimonials = [
       ))}
     </div>
 
+    <div class="certificates-strip">
+      <img src="/images/entrega-certificados2.webp" alt="Entrega de certificados" loading="lazy" decoding="async" />
+      <img src="/images/entrega-certificados3.webp" alt="Alunos recebendo certificados" loading="lazy" decoding="async" />
+      <img src="/images/entrega-certificados4.webp" alt="Cerimônia de certificação" loading="lazy" decoding="async" />
+    </div>
+
     <div class="testimonials-note">
       <p>* Resultados reais de alunos. Resultados individuais podem variar de acordo com dedicação e mercado local.</p>
     </div>
@@ -265,6 +271,31 @@ const testimonials = [
     border-radius: 50%;
     opacity: 0.05;
     transition: opacity 0.4s ease;
+  }
+
+  /* Certificates strip */
+  .certificates-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .certificates-strip img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid rgba(201, 169, 98, 0.15);
+  }
+
+  @media (max-width: 768px) {
+    .certificates-strip {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   /* Note */
