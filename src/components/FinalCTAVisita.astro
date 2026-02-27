@@ -1,8 +1,8 @@
 ---
-const whatsappLink = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20mais%20sobre%20o%20curso%20Forma%C3%A7%C3%A3o%20de%20Tatuadores";
+const calendlyUrl = "https://calendly.com/projetotattoo/visita";
 ---
 
-<section class="final-cta-section">
+<section id="agendar" class="final-cta-section">
   <div class="cta-background">
     <div class="ink-splash-1"></div>
     <div class="ink-splash-2"></div>
@@ -13,17 +13,17 @@ const whatsappLink = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20m
     <div class="cta-content">
       <span class="urgency-badge">
         <span class="pulse-dot"></span>
-        Últimas vagas disponíveis
+        Visitas disponíveis — agenda limitada
       </span>
 
       <h2 class="cta-headline">
-        Sua transformação<br/>
-        <span class="highlight">começa com uma decisão</span>
+        Venha conhecer<br/>
+        <span class="highlight">a escola pessoalmente</span>
       </h2>
 
       <p class="cta-subtext">
-        Turmas com no máximo <strong>6 alunos</strong> para garantir atenção individual.<br/>
-        Não deixe para depois o que pode mudar sua vida agora.
+        Conheça nosso espaço em <strong>Santana</strong>, veja os equipamentos, tire todas as dúvidas e sinta o ambiente antes de decidir.<br/>
+        Sem compromisso. Só você e a nossa equipe.
       </p>
 
       <div class="cta-features">
@@ -31,33 +31,42 @@ const whatsappLink = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20m
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
-          <span>40h de imersão</span>
+          <span>Tour pela escola</span>
         </div>
         <div class="feature">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
-          <span>2 tattoos reais</span>
+          <span>Conversa com o professor</span>
         </div>
         <div class="feature">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
-          <span>Certificado incluso</span>
+          <span>Sem compromisso</span>
         </div>
       </div>
 
-      <a href={whatsappLink} target="_blank" rel="noopener" class="cta-button-main">
-        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      <div class="address-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="pin-icon">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+          <circle cx="12" cy="9" r="2.5"/>
         </svg>
-        <span class="button-text">Garantir minha vaga agora</span>
-        <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
+        <div>
+          <span class="address-label">Unidade Santana</span>
+          <span class="address-text">R. Alferes Magalhães, 92 — Sala 137</span>
+        </div>
+      </div>
 
-      <p class="cta-note">Fale com nosso time e tire todas as suas dúvidas — sem compromisso</p>
+      <!-- Calendly inline embed -->
+      <div class="calendly-wrapper">
+        <div
+          class="calendly-inline-widget"
+          data-url={calendlyUrl}
+          style="min-width:320px;height:1000px;"
+        ></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      </div>
     </div>
   </div>
 </section>
@@ -65,11 +74,10 @@ const whatsappLink = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20m
 <style>
   .final-cta-section {
     position: relative;
-    padding: clamp(5rem, 12vw, 10rem) 0;
+    padding: clamp(5rem, 12vw, 10rem) 0 clamp(3rem, 8vw, 6rem);
     overflow: hidden;
   }
 
-  /* Background */
   .cta-background {
     position: absolute;
     inset: 0;
@@ -112,12 +120,11 @@ const whatsappLink = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20m
     background-size: 60px 60px;
   }
 
-  /* Content */
   .cta-content {
     position: relative;
     z-index: 1;
     text-align: center;
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
   }
 
@@ -126,27 +133,21 @@ const whatsappLink = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20m
     align-items: center;
     gap: 0.75rem;
     padding: 0.75rem 1.5rem;
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid rgba(239, 68, 68, 0.3);
+    background: rgba(201, 169, 98, 0.1);
+    border: 1px solid rgba(201, 169, 98, 0.3);
     border-radius: 100px;
-    color: var(--red);
+    color: var(--gold);
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 2rem;
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
-    50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
   }
 
   .pulse-dot {
     width: 10px;
     height: 10px;
-    background: var(--red);
+    background: var(--gold);
     border-radius: 50%;
     animation: blink 1s infinite;
   }
@@ -180,12 +181,11 @@ const whatsappLink = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20m
     color: var(--white);
   }
 
-  /* Features */
   .cta-features {
     display: flex;
     justify-content: center;
     gap: 2rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     flex-wrap: wrap;
   }
 
@@ -203,67 +203,48 @@ const whatsappLink = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20m
     color: var(--green);
   }
 
-  /* Main CTA Button */
-  .cta-button-main {
+  .address-card {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 1.5rem 3rem;
-    background: linear-gradient(135deg, var(--green) 0%, #16a34a 100%);
-    color: var(--white);
-    font-weight: 700;
-    font-size: 1.1rem;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: rgba(201, 169, 98, 0.08);
+    border: 1px solid rgba(201, 169, 98, 0.2);
     border-radius: 12px;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 40px rgba(34, 197, 94, 0.3);
+    margin-bottom: 3rem;
+    text-align: left;
   }
 
-  .cta-button-main::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s ease;
+  .pin-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--gold);
+    flex-shrink: 0;
   }
 
-  .cta-button-main:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 50px rgba(34, 197, 94, 0.4);
+  .address-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
   }
 
-  .cta-button-main:hover::before {
-    left: 100%;
-  }
-
-  .whatsapp-icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .arrow-icon {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.3s ease;
-  }
-
-  .cta-button-main:hover .arrow-icon {
-    transform: translateX(4px);
-  }
-
-  .cta-note {
-    margin-top: 1.5rem;
-    font-size: 0.85rem;
+  .address-text {
+    display: block;
+    font-size: 0.95rem;
     color: var(--white-dim);
-    opacity: 0.7;
   }
 
-  /* Responsive */
+  .calendly-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: #fff;
+  }
+
   @media (max-width: 768px) {
     .cta-features {
       gap: 1rem;
@@ -273,9 +254,8 @@ const whatsappLink = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20m
       font-size: 0.8rem;
     }
 
-    .cta-button-main {
-      width: 100%;
-      padding: 1.25rem 2rem;
+    .address-card {
+      text-align: left;
     }
   }
 
@@ -283,6 +263,11 @@ const whatsappLink = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20m
     .cta-features {
       flex-direction: column;
       gap: 0.75rem;
+    }
+
+    .address-card {
+      flex-direction: column;
+      text-align: center;
     }
   }
 </style>

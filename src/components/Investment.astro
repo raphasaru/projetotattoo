@@ -1,5 +1,9 @@
 ---
-const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!%20Quero%20saber%20as%20condições%20de%20pagamento%20do%20curso";
+interface Props {
+  ctaHref?: string;
+}
+const { ctaHref = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20mais%20sobre%20o%20curso%20Forma%C3%A7%C3%A3o%20de%20Tatuadores" } = Astro.props;
+const isExternal = ctaHref.startsWith('http');
 ---
 
 <section class="investment-section section">
@@ -96,7 +100,7 @@ const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!
           Não vendemos promessas.<br/>
           <strong>Vendemos transformação real.</strong>
         </p>
-        <a href={whatsappLink} target="_blank" rel="noopener" class="cta-button">
+        <a href={ctaHref} target={isExternal ? "_blank" : "_self"} rel="noopener" class="cta-button">
           <span>Quero saber as condições</span>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7"/>

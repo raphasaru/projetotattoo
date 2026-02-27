@@ -6,7 +6,11 @@ const benefits = [
   "Entra num grupo de alunos no WhatsApp com +5.000 tatuadores"
 ];
 
-const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!%20Vim%20do%20site%20e%20quero%20saber%20mais%20sobre%20o%20curso%20de%20tatuagem";
+interface Props {
+  ctaHref?: string;
+}
+const { ctaHref = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20mais%20sobre%20o%20curso%20Forma%C3%A7%C3%A3o%20de%20Tatuadores" } = Astro.props;
+const isExternal = ctaHref.startsWith('http');
 ---
 
 <section class="transform-section section">
@@ -85,7 +89,7 @@ const whatsappLink = "https://api.whatsapp.com/send?phone=5511999999999&text=Oi!
           <p class="cta-context">
             Isso é o <strong>Projeto Tattoo</strong>. 12 anos formando artistas que hoje vivem exclusivamente de tatuagem.
           </p>
-          <a href={whatsappLink} target="_blank" rel="noopener" class="cta-button secondary">
+          <a href={ctaHref} target={isExternal ? "_blank" : "_self"} rel="noopener" class="cta-button secondary">
             <span>Quero conhecer o método</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
