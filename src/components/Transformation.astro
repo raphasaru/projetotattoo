@@ -9,7 +9,7 @@ const benefits = [
 interface Props {
   ctaHref?: string;
 }
-const { ctaHref = "https://wa.me/5511941721536?text=Gostaria%20de%20saber%20mais%20sobre%20o%20curso%20Forma%C3%A7%C3%A3o%20de%20Tatuadores" } = Astro.props;
+const { ctaHref = "https://api.whatsapp.com/send?phone=5511941721536&text=Gostaria%20de%20saber%20mais%20sobre%20o%20curso%20Forma%C3%A7%C3%A3o%20de%20Tatuadores" } = Astro.props;
 const isExternal = ctaHref.startsWith('http');
 ---
 
