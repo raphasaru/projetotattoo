@@ -153,9 +153,17 @@ const {
   }
 
   .hero-logo {
-    width: 120px;
+    width: 160px;
     margin-bottom: 1.5rem;
     opacity: 0.9;
+  }
+
+  @media (max-width: 768px) {
+    .hero-logo {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   .hero-badge {
