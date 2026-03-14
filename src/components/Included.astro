@@ -32,18 +32,6 @@ const mainFeatures = [
   }
 ];
 
-const bonuses = [
-  {
-    title: "Curso de Colorimetria",
-    value: "R$ 497",
-    description: "Domine as cores e combinações"
-  },
-  {
-    title: "Curso de Fotografia para Tatuadores",
-    value: "R$ 297",
-    description: "Fotografe seus trabalhos profissionalmente"
-  }
-];
 ---
 
 <section class="included-section section">
@@ -109,35 +97,6 @@ const bonuses = [
       ))}
     </div>
 
-    <!-- Bonuses -->
-    <div class="bonuses-section">
-      <div class="bonuses-header">
-        <span class="bonus-label">Bônus exclusivos</span>
-        <h3 class="bonus-title">E você ainda leva de presente:</h3>
-      </div>
-
-      <div class="bonuses-grid">
-        {bonuses.map((bonus, index) => (
-          <div class="bonus-card" style={`--delay: ${index * 0.15}s`}>
-            <div class="bonus-badge">GRÁTIS</div>
-            <div class="bonus-content">
-              <span class="bonus-value">Valor: <s>{bonus.value}</s></span>
-              <h4 class="bonus-name">{bonus.title}</h4>
-              <p class="bonus-description">{bonus.description}</p>
-            </div>
-            <div class="bonus-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <polyline points="20 12 20 22 4 22 4 12"/>
-                <rect x="2" y="7" width="20" height="5"/>
-                <line x1="12" y1="22" x2="12" y2="7"/>
-                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
-                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
-              </svg>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
   </div>
 </section>
 
@@ -172,7 +131,6 @@ const bonuses = [
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
-    margin-bottom: 5rem;
   }
 
   .feature-card {
@@ -244,137 +202,12 @@ const bonuses = [
     height: 16px;
   }
 
-  /* Bonuses */
-  .bonuses-section {
-    position: relative;
-    padding-top: 3rem;
-  }
-
-  .bonuses-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  }
-
-  .bonuses-header {
-    text-align: center;
-    margin-bottom: 2rem;
-  }
-
-  .bonus-label {
-    display: inline-block;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    color: var(--green);
-    margin-bottom: 0.5rem;
-  }
-
-  .bonus-title {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    color: var(--white);
-  }
-
-  .bonuses-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .bonus-card {
-    position: relative;
-    padding: 2rem;
-    background: linear-gradient(135deg, rgba(201, 169, 98, 0.1) 0%, rgba(201, 169, 98, 0.02) 100%);
-    border: 1px solid rgba(201, 169, 98, 0.3);
-    border-radius: 16px;
-    overflow: hidden;
-    opacity: 0;
-    transform: scale(0.95);
-    animation: scaleIn 0.5s ease-out var(--delay) forwards;
-  }
-
-  @keyframes scaleIn {
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  .bonus-badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 0.25rem 0.75rem;
-    background: var(--green);
-    color: var(--white);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    border-radius: 4px;
-  }
-
-  .bonus-content {
-    position: relative;
-    z-index: 1;
-  }
-
-  .bonus-value {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--white-dim);
-    margin-bottom: 0.5rem;
-  }
-
-  .bonus-value s {
-    color: var(--red);
-  }
-
-  .bonus-name {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 0.5rem;
-  }
-
-  .bonus-description {
-    font-size: 0.9rem;
-    color: var(--white-dim);
-  }
-
-  .bonus-icon {
-    position: absolute;
-    bottom: -10px;
-    right: -10px;
-    width: 80px;
-    height: 80px;
-    color: var(--gold);
-    opacity: 0.1;
-  }
-
-  .bonus-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-
   /* Responsive */
   @media (max-width: 768px) {
     .features-grid {
       grid-template-columns: 1fr;
     }
 
-    .bonuses-grid {
-      grid-template-columns: 1fr;
-    }
   }
 
   @media (max-width: 480px) {
