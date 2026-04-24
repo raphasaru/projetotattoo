@@ -1,0 +1,109 @@
+---
+const videos = [
+  {
+    id: "PsGGK1gcd8A",
+    label: "Depoimento de aluno"
+  },
+  {
+    id: "y668UZCjDBo",
+    label: "Depoimento de aluno"
+  },
+  {
+    id: "YaxS8QIBAfg",
+    label: "Depoimento de aluno"
+  }
+];
+---
+
+<section class="video-testimonials section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Voz de quem passou por aqui</span>
+      <h2 class="section-title">Ouça quem já fez.<br/><span class="gold">Não o que a gente fala.</span></h2>
+    </div>
+
+    <div class="videos-grid">
+      {videos.map((video) => (
+        <div class="video-wrapper">
+          <iframe
+            src={`https://www.youtube.com/embed/${video.id}`}
+            title={video.label}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .video-testimonials {
+    background: var(--black);
+    position: relative;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .gold { color: var(--gold); }
+
+  .videos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .video-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9/16;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 169, 98, 0.15);
+    background: var(--black-lighter);
+  }
+
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  @media (max-width: 768px) {
+    .videos-grid {
+      grid-template-columns: 1fr;
+      max-width: 340px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .videos-grid {
+      max-width: 700px;
+    }
+  }
+</style>

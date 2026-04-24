@@ -1,0 +1,345 @@
+---
+const mainInstructor = {
+  name: "Regis",
+  title: "Fundador & Professor",
+  description: "12 anos formando tatuadores profissionais. Tatuou por 9 anos na Inglaterra e passou por Portugal, Espanha, Itália e Alemanha — uma experiência internacional que traz para dentro de cada aula.",
+  image: "/images/instrutor-regis.webp",
+  tag: "Professor"
+};
+
+const instructors = [
+  {
+    name: "Ana",
+    title: "Professora",
+    description: "Especialista em técnica e atendimento ao aluno, garante que cada pessoa saia do curso com base sólida.",
+    image: "/images/professora-ana.webp",
+    tag: "Professora"
+  },
+  {
+    name: "Lucas",
+    title: "Instrutor",
+    description: "Instrutor no Projeto Tattoo, acompanha os alunos nas práticas e nas primeiras tatuagens reais.",
+    image: "/images/instrutor-lucas.webp",
+    tag: "Instrutor"
+  },
+  {
+    name: "Marcão",
+    title: "Instrutor",
+    description: "Instrutor no Projeto Tattoo, especialista em dar suporte técnico durante as aulas práticas.",
+    image: "/images/instrutor-marcao.webp",
+    tag: "Instrutor"
+  },
+  {
+    name: "Leandro",
+    title: "Instrutor",
+    description: "Instrutor no Projeto Tattoo, referência de suporte técnico e prático durante a formação.",
+    image: "/images/instrutor-leandro.webp",
+    tag: "Instrutor"
+  }
+];
+---
+
+<section class="instructors-section section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Quem vai te ensinar</span>
+      <h2 class="section-title">Profissionais do mercado.<br/><span class="gold">Não teóricos de sala de aula.</span></h2>
+      <p class="section-sub">Cada instrutor é tatuador ativo — você aprende com quem vive disso todos os dias.</p>
+    </div>
+
+    <!-- Main instructor -->
+    <div class="main-instructor">
+      <div class="main-photo-wrapper">
+        <img
+          src={mainInstructor.image}
+          alt={mainInstructor.name}
+          loading="lazy"
+          decoding="async"
+          class="main-photo"
+        />
+        <span class="tag tag-main">{mainInstructor.tag}</span>
+      </div>
+      <div class="main-info">
+        <h3 class="instructor-name main-name">{mainInstructor.name}</h3>
+        <p class="instructor-title">{mainInstructor.title}</p>
+        <p class="instructor-desc">{mainInstructor.description}</p>
+        <div class="main-stats">
+          <div class="stat">
+            <span class="stat-n">12</span>
+            <span class="stat-l">anos de escola</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n">5mil+</span>
+            <span class="stat-l">alunos formados</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n">7</span>
+            <span class="stat-l">países com alunos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Support instructors -->
+    <div class="instructors-grid">
+      {instructors.map((inst) => (
+        <div class="instructor-card">
+          <div class="card-photo-wrapper">
+            <img
+              src={inst.image}
+              alt={inst.name}
+              loading="lazy"
+              decoding="async"
+              class="card-photo"
+            />
+            <span class="tag">{inst.tag}</span>
+          </div>
+          <div class="card-info">
+            <h3 class="instructor-name">{inst.name}</h3>
+            <p class="instructor-title">{inst.title}</p>
+            <p class="instructor-desc">{inst.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .instructors-section {
+    background: var(--black-light);
+    position: relative;
+  }
+
+  .instructors-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .gold { color: var(--gold); }
+
+  .section-sub {
+    color: var(--white-dim);
+    font-size: 1.05rem;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  /* Main instructor */
+  .main-instructor {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 4rem;
+    align-items: center;
+    margin-bottom: 4rem;
+    background: var(--black);
+    border: 1px solid rgba(201, 169, 98, 0.2);
+    border-radius: 24px;
+    padding: 2.5rem;
+  }
+
+  .main-photo-wrapper {
+    position: relative;
+  }
+
+  .main-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 16px;
+    display: block;
+  }
+
+  .tag {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+  }
+
+  .tag-main {
+    background: var(--gold);
+    font-size: 0.75rem;
+    padding: 0.4rem 1rem;
+  }
+
+  .main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .instructor-name {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--white);
+  }
+
+  .main-name {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    color: var(--gold);
+  }
+
+  .instructor-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--white-dim);
+  }
+
+  .instructor-desc {
+    font-size: 1rem;
+    color: var(--white-dim);
+    line-height: 1.7;
+  }
+
+  .main-stats {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .stat-n {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .stat-l {
+    font-size: 0.75rem;
+    color: var(--white-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* Grid */
+  .instructors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .instructor-card {
+    background: var(--black);
+    border: 1px solid rgba(201, 169, 98, 0.12);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .instructor-card:hover {
+    border-color: rgba(201, 169, 98, 0.4);
+    transform: translateY(-4px);
+  }
+
+  .card-photo-wrapper {
+    position: relative;
+  }
+
+  .card-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  .card-info {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .card-info .instructor-name {
+    font-size: 1.25rem;
+  }
+
+  .card-info .instructor-desc {
+    font-size: 0.85rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .instructors-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main-instructor {
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-instructor {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .main-photo {
+      aspect-ratio: 4/3;
+    }
+
+    .main-stats {
+      gap: 1.5rem;
+    }
+
+    .instructors-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .instructors-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+---
+
+<section class="google-reviews section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Google Avaliações</span>
+      <h2 class="section-title">O que dizem sobre nós.<br/><span class="gold">No Google. Sem filtro.</span></h2>
+    </div>
+
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <div class="elfsight-app-531f1ba3-417a-45ba-a591-795c1310a9b1" data-elfsight-app-lazy></div>
+  </div>
+</section>
+
+<style>
+  .google-reviews {
+    background: var(--black-light);
+    position: relative;
+  }
+
+  .google-reviews::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-label {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+
+  .gold { color: var(--gold); }
+</style>
