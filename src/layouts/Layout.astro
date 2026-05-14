@@ -44,6 +44,35 @@ const { title, description = "Aprenda a tatuar e viva da sua arte. Curso presenc
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TSVFHX6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <slot />
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var source = (params.get("utm_source") || "").toLowerCase();
+        var isGoogle = source === "google" || params.has("gclid");
+        var isMeta = source === "meta" || source === "facebook" || source === "instagram" || params.has("fbclid");
+        if (!isGoogle && !isMeta) return;
+        document.querySelectorAll('a[href*="api.whatsapp.com"]').forEach(function (link) {
+          try {
+            var url = new URL(link.href);
+            var text = url.searchParams.get("text");
+            if (!text) return;
+            var newText = isGoogle
+              ? text
+                  .replace(/gostaria de saber mais/i, "Gostaria de mais informações")
+                  .replace(/gostaria de ter informações/i, "Gostaria de mais informações")
+                  .replace(/gostaria de ter mais informações/i, "Gostaria de mais informações")
+              : text
+                  .replace(/gostaria de saber mais/i, "Gostaria de mais detalhes")
+                  .replace(/gostaria de ter informações/i, "Gostaria de mais detalhes")
+                  .replace(/gostaria de ter mais informações/i, "Gostaria de mais detalhes");
+            if (newText !== text) {
+              url.searchParams.set("text", newText);
+              link.href = url.toString();
+            }
+          } catch (_) {}
+        });
+      })();
+    </script>
   </body>
 </html>
 
