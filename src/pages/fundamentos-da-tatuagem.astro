@@ -1,0 +1,1390 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Portfolio from '../components/Portfolio.astro';
+import Instructors from '../components/Instructors.astro';
+
+const WA_LINK = "https://api.whatsapp.com/send?phone=5511941721536&text=Gostaria%20de%20saber%20mais%20sobre%20o%20Fundamentos%20da%20Tatuagem";
+
+const aulas = [
+  {
+    day: "SEG",
+    title: "Máquinas",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>`,
+    items: [
+      "Tipos de máquina rotativa e bobina",
+      "Configurações para traço, sombra e pintura",
+      "O que vale a pena comprar quando você está começando",
+      "Prática: firmeza, velocidade e profundidade"
+    ]
+  },
+  {
+    day: "TER",
+    title: "Tintas & Pigmentos",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10"/><path d="M12 2v10l4.5 4.5"/></svg>`,
+    items: [
+      "Tintas, pigmentos, cores e marcas",
+      "Diluentes e como usá-los corretamente",
+      "Prática: preenchimento sólido blocado",
+      "Prática: sombra suave e degradê"
+    ]
+  },
+  {
+    day: "QUA",
+    title: "Agulhas",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3"/></svg>`,
+    items: [
+      "Tipos de agulha e configurações",
+      "Como escolher a agulha certa para cada técnica",
+      "Prática: colorido, degradê e transições de cor",
+      "Mistura de cores aplicada"
+    ]
+  },
+  {
+    day: "QUI",
+    title: "Biossegurança",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>`,
+    items: [
+      "Cuidados básicos e normas sanitárias",
+      "Contaminação cruzada: como evitar",
+      "EPIs obrigatórios e como usá-los",
+      "Responsabilidade profissional"
+    ]
+  },
+  {
+    day: "SEX",
+    title: "Produtos & Certificado",
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M9 8V6a3 3 0 016 0v2"/><path d="M12 13v3M10.5 13h3"/></svg>`,
+    items: [
+      "Marcas, stêncil e preparação da pele",
+      "Cuidados pós-tattoo para orientar seus clientes",
+      "Lista definitiva de materiais para montar seu kit",
+      "Entrega do certificado de conclusão"
+    ]
+  }
+];
+
+const includes = [
+  { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`, text: "5 dias de aula prática presencial" },
+  { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>`, text: "Certificado de conclusão reconhecido" },
+  { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>`, text: "Mapa de estudos para continuar em casa" },
+  { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>`, text: "Lista de materiais certos para comprar" },
+  { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>`, text: "Aulas com profissionais do mercado" },
+  { icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>`, text: "Suporte no WhatsApp durante o curso" },
+];
+
+const faqs = [
+  {
+    q: "Preciso ter experiência ou saber desenhar?",
+    a: "Não. O Fundamentos foi feito para quem está começando do zero. Você não precisa ter experiência com tatuagem nem ser bom em desenho. Tudo é ensinado do início."
+  },
+  {
+    q: "Quanto tempo dura o curso?",
+    a: "São 5 dias de segunda a sexta-feira, com aulas presenciais e práticas. Você sai com os fundamentos completos e um mapa de estudos para continuar evoluindo após o curso."
+  },
+  {
+    q: "Vou praticar durante o curso?",
+    a: "Sim. Cada aula combina teoria com prática no artificial. Você sai tendo praticado traço, preenchimento sólido, sombra, degradê e colorido, e com um mapa de estudos para continuar em casa."
+  },
+  {
+    q: "Tem certificado?",
+    a: "Sim. Na última aula você recebe o certificado de conclusão do Projeto Tattoo, com 13 anos de tradição no mercado de tatuagem profissional."
+  },
+  {
+    q: "Como funciona o pagamento?",
+    a: "Aceitamos parcelamento no cartão de crédito. Fale com a gente no WhatsApp para saber os valores atuais e condições disponíveis."
+  },
+  {
+    q: "Onde fica a escola?",
+    a: "R. Alferes Magalhães, 92 - Sala 137 - Santana, São Paulo - SP."
+  }
+];
+
+const stats = [
+  { number: "13", label: "Anos de tradição" },
+  { number: "8mil+", label: "Alunos formados" },
+  { number: "5Mi+", label: "Views no YouTube" },
+  { number: "7", label: "Países com ex-alunos" },
+];
+---
+
+<Layout
+  title="Fundamentos da Tatuagem | Aprenda a Base em 5 Dias | Projeto Tattoo"
+  description="Curso presencial de fundamentos da tatuagem: 5 dias práticos para aprender máquinas, tintas, agulhas e biossegurança. Certificado incluso. Projeto Tattoo, 13 anos formando profissionais."
+>
+  <main>
+
+    <!-- ─── HERO (DARK) ──────────────────────────────────── -->
+    <section class="hero-section">
+      <div class="hero-bg-glow glow-1"></div>
+      <div class="hero-bg-glow glow-2"></div>
+      <div class="dot-grid"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <img
+            src="/images/projeto-tattoo-logo-dourado.webp"
+            alt="Projeto Tattoo"
+            class="hero-logo"
+            fetchpriority="high"
+          />
+
+          <span class="hero-badge reveal">
+            <span class="badge-pulse"></span>
+            Novo curso presencial · Vagas abertas
+          </span>
+
+          <h1 class="hero-headline reveal delay-1">
+            A base que todo<br/>
+            <span class="gold-text">tatuador precisa</span><br/>
+            para começar certo
+          </h1>
+
+          <p class="hero-sub reveal delay-2">
+            5 dias de aula prática para dominar os fundamentos da tatuagem:
+            máquinas, tintas, agulhas, biossegurança e produtos.
+            Saia com certificado e um mapa de estudos para continuar evoluindo em casa.
+          </p>
+
+          <a href={WA_LINK} target="_blank" rel="noopener" class="cta-btn reveal delay-3">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Garantir minha vaga
+          </a>
+
+          <div class="hero-trust reveal delay-4">
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Não precisa de experiência prévia</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+              <span>Certificado incluso</span>
+            </div>
+            <div class="trust-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+              <span>Mapa de estudos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal delay-2">
+          <div class="hero-card-stack">
+            <div class="day-preview-card">
+              <span class="day-label">5 dias</span>
+              <p class="day-title">Segunda a sexta</p>
+              <div class="day-modules">
+                <span>Máquinas</span>
+                <span>Tintas</span>
+                <span>Agulhas</span>
+                <span>Biossegurança</span>
+                <span>Produtos</span>
+              </div>
+            </div>
+            <div class="cert-preview-card">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              <div>
+                <p class="cert-label">Certificado</p>
+                <p class="cert-sub">Projeto Tattoo · 13 anos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-divider"></div>
+    </section>
+
+    <!-- ─── PARA QUEM É (LIGHT) ──────────────────────────── -->
+    <section class="for-who-section light-section">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-label-gold">Para quem é esse curso</span>
+          <h2 class="section-title dark-text">Você se identifica com algum desses pontos?</h2>
+        </div>
+
+        <div class="pain-grid">
+          <div class="pain-card reveal">
+            <div class="pain-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            </div>
+            <p>"Quero tatuar mas não sei por onde começar: máquina, agulha, tinta... dá um nó na cabeça."</p>
+          </div>
+          <div class="pain-card reveal" style="transition-delay:0.1s">
+            <div class="pain-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <p>"Tenho medo de gastar dinheiro com material errado antes de entender o que realmente preciso."</p>
+          </div>
+          <div class="pain-card reveal" style="transition-delay:0.2s">
+            <div class="pain-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <p>"Quero ter certeza de que é isso antes de me comprometer com algo mais longo. Preciso de um ponto de entrada."</p>
+          </div>
+          <div class="pain-card reveal" style="transition-delay:0.3s">
+            <div class="pain-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 3a3 3 0 0 1 0 6h-6a3 3 0 0 1 0-6z"/><path d="M6 21a3 3 0 0 1 0-6h6a3 3 0 0 1 0 6z"/></svg>
+            </div>
+            <p>"Fico adiando porque sinto que preciso de uma base primeiro: algum lugar para realmente começar."</p>
+          </div>
+        </div>
+
+        <div class="for-who-cta reveal">
+          <p class="for-who-message">
+            Se você se identificou, o <strong>Fundamentos da Tatuagem</strong> é exatamente o que você precisa. Em 5 dias você aprende os pilares reais da profissão, sem enrolação.
+          </p>
+          <a href={WA_LINK} target="_blank" rel="noopener" class="cta-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Quero saber mais
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── GRADE DE AULAS (DARK) ────────────────────────── -->
+    <section class="aulas-section dark-section section">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-label-gold">Conteúdo do curso</span>
+          <h2 class="section-title">5 dias. 5 pilares. O começo certo.</h2>
+          <p class="section-sub">Cada aula combina teoria essencial com prática no artificial. Você já sai praticando desde o primeiro dia.</p>
+        </div>
+
+        <div class="aulas-grid">
+          {aulas.map((aula, i) => (
+            <div class="aula-card reveal" style={`transition-delay: ${i * 0.08}s`}>
+              <div class="aula-header">
+                <span class="aula-day">{aula.day}</span>
+                <div class="aula-icon" set:html={aula.icon}></div>
+              </div>
+              <h3 class="aula-title">{aula.title}</h3>
+              <ul class="aula-items">
+                {aula.items.map(item => (
+                  <li>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 13l4 4L19 7"/></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        <div class="aulas-cta reveal">
+          <a href={WA_LINK} target="_blank" rel="noopener" class="cta-btn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Quero garantir minha vaga
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PROFESSORES (DARK) ─────────────────────────── -->
+    <Instructors />
+
+    <!-- ─── O QUE ESTÁ INCLUSO (LIGHT) ──────────────────── -->
+    <section class="includes-section light-section">
+      <div class="container includes-inner">
+        <div class="includes-text reveal">
+          <span class="section-label-gold">O que você leva</span>
+          <h2 class="section-title dark-text">Tudo que você precisa para começar</h2>
+          <p class="includes-desc dark-text-dim">
+            Nada de enrolação. Cada item do curso foi pensado para te dar uma base sólida e economizar seu dinheiro lá na frente.
+          </p>
+
+          <ul class="includes-list">
+            {includes.map((item) => (
+              <li class="include-item reveal">
+                <div class="include-icon" set:html={item.icon}></div>
+                <span>{item.text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="bonus-card reveal">
+          <div class="bonus-tag">BÔNUS</div>
+          <div class="bonus-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 12h4l3 8 4-16 3 8h4"/>
+            </svg>
+          </div>
+          <h3 class="bonus-title">Mapa de Estudos</h3>
+          <p class="bonus-desc">
+            Um plano semana a semana com o que praticar depois do curso, para você evoluir em casa sem perder tempo e sem ficar travado sem saber o que fazer.
+          </p>
+          <div class="bonus-weeks">
+            <div class="week-item">
+              <span class="week-label">Semana 1</span>
+              <span>Prática de traço</span>
+            </div>
+            <div class="week-item">
+              <span class="week-label">Semana 2</span>
+              <span>Sombra sólida e Whip Shade</span>
+            </div>
+            <div class="week-item">
+              <span class="week-label">Semana 3</span>
+              <span>Preenchimento colorido</span>
+            </div>
+            <div class="week-item">
+              <span class="week-label">Semana 4+</span>
+              <span>Projetos livres guiados</span>
+            </div>
+          </div>
+          <p class="bonus-note">
+            Também inclui a <strong>lista de materiais certos</strong>: saia sabendo exatamente o que comprar e pare de desperdiçar dinheiro com equipamento errado.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── GALERIA (DARK) ──────────────────────────────── -->
+    <Portfolio />
+
+    <!-- ─── AUTORIDADE (DARK) ────────────────────────────── -->
+    <section class="authority-section dark-section section">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-label-gold">Por que o Projeto Tattoo</span>
+          <h2 class="section-title">13 anos formando<br/>tatuadores profissionais</h2>
+          <p class="section-sub">Não é um curso qualquer. É a escola que já formou mais de 8 mil tatuadores e tem alunos trabalhando em 7 países.</p>
+        </div>
+
+        <div class="stats-row">
+          {stats.map((s, i) => (
+            <div class="stat-box reveal" style={`transition-delay: ${i * 0.1}s`}>
+              <span class="stat-num">{s.number}</span>
+              <span class="stat-lbl">{s.label}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="authority-badges reveal">
+          <div class="auth-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            <span>Certificado reconhecido pelo mercado</span>
+          </div>
+          <div class="auth-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            <span>Alunos em 7 países diferentes</span>
+          </div>
+          <div class="auth-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span>Premiados em convenções nacionais</span>
+          </div>
+          <div class="auth-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>5 milhões de views no YouTube</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- vertical lines -->
+      <div class="bg-lines-authority">
+        <div class="vline"></div>
+        <div class="vline"></div>
+        <div class="vline"></div>
+      </div>
+    </section>
+
+    <!-- ─── FAQ (LIGHT, SEM ACCORDION) ──────────────────── -->
+    <section class="faq-section light-section">
+      <div class="container">
+        <div class="section-header center">
+          <span class="section-label-gold">Dúvidas frequentes</span>
+          <h2 class="section-title dark-text">Tire suas dúvidas</h2>
+        </div>
+
+        <div class="faq-grid">
+          {faqs.map((faq, i) => (
+            <div class="faq-item reveal" style={`transition-delay: ${i * 0.07}s`}>
+              <div class="faq-num">{String(i + 1).padStart(2, '0')}</div>
+              <div class="faq-content">
+                <h3 class="faq-q">{faq.q}</h3>
+                <p class="faq-a">{faq.a}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── FINAL CTA (DARK) ─────────────────────────────── -->
+    <section class="final-cta-section dark-section section">
+      <div class="final-cta-glow"></div>
+      <div class="final-grid-overlay"></div>
+
+      <div class="container final-cta-inner">
+        <span class="final-badge">
+          <span class="badge-pulse red"></span>
+          Vagas limitadas
+        </span>
+
+        <h2 class="final-headline">
+          Pronto para<br/>
+          <span class="gold-text">começar do jeito certo?</span>
+        </h2>
+
+        <p class="final-sub">
+          Fale com a gente agora e garanta sua vaga no Fundamentos da Tatuagem.
+          Em 5 dias você sai com a base que vai te fazer evoluir de verdade.
+        </p>
+
+        <a href={WA_LINK} target="_blank" rel="noopener" class="cta-btn cta-lg">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Quero garantir minha vaga
+        </a>
+
+        <p class="final-note">
+          Fale com a gente no WhatsApp · Sem compromisso
+        </p>
+      </div>
+    </section>
+
+    <!-- ─── FOOTER ────────────────────────────────────────── -->
+    <footer class="site-footer dark-section">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="/images/projeto-tattoo-logo-dourado.webp" alt="Projeto Tattoo" />
+          <span class="footer-tagline">13 anos formando tatuadores profissionais</span>
+        </div>
+        <div class="footer-links">
+          <a href="https://instagram.com/projetotattoo" target="_blank" rel="noopener" class="footer-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>
+            Instagram
+          </a>
+          <a href="https://youtube.com/@projetotattoo" target="_blank" rel="noopener" class="footer-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"/></svg>
+            YouTube
+          </a>
+        </div>
+        <div class="footer-legal">
+          <p>R. Alferes Magalhães, 92 - Sala 137 - Santana, São Paulo - SP</p>
+          <p>&copy; {new Date().getFullYear()} Projeto Tattoo. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+</Layout>
+
+<style>
+  /* ── LIGHT/DARK SECTION BASES ─────────────────────────── */
+  .dark-section {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .light-section {
+    background: #F5F0E8;
+    color: #0A0A0A;
+    padding: clamp(4rem, 10vw, 8rem) 0;
+  }
+
+  .dark-text { color: #0A0A0A; }
+  .dark-text-dim { color: #555555; }
+  .gold-text { color: var(--gold); }
+
+  /* ── SECTION SHARED ───────────────────────────────────── */
+  .section-header { margin-bottom: 3.5rem; }
+  .section-header.center { text-align: center; }
+
+  .section-label-gold {
+    display: inline-block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--white);
+  }
+
+  .section-title.dark-text { color: #0A0A0A; }
+
+  .section-sub {
+    color: var(--white-dim);
+    font-size: 1.05rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* ── REVEAL ANIMATION ─────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── CTA BUTTON ───────────────────────────────────────── */
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 36px;
+    background: var(--green);
+    color: #fff;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 30px rgba(34, 197, 94, 0.25);
+  }
+  .cta-btn:hover {
+    background: var(--green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px rgba(34, 197, 94, 0.35);
+  }
+  .cta-btn svg { flex-shrink: 0; }
+  .cta-btn.cta-lg { padding: 22px 48px; font-size: 1.1rem; }
+
+  /* ── HERO ─────────────────────────────────────────────── */
+  .hero-logo {
+    height: 140px;
+    width: auto;
+    margin-bottom: 2rem;
+  }
+  .hero-section {
+    background: var(--black);
+    position: relative;
+    overflow: hidden;
+    padding: clamp(5rem, 14vw, 10rem) 0 clamp(4rem, 10vw, 7rem);
+  }
+
+  .hero-bg-glow {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(80px);
+  }
+  .glow-1 {
+    width: 500px; height: 500px;
+    background: rgba(201, 169, 98, 0.07);
+    top: -100px; left: -100px;
+  }
+  .glow-2 {
+    width: 400px; height: 400px;
+    background: rgba(34, 197, 94, 0.04);
+    bottom: -50px; right: -50px;
+  }
+
+  .dot-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 2px 2px, rgba(201, 169, 98, 0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: rgba(201, 169, 98, 0.1);
+    border: 1px solid rgba(201, 169, 98, 0.3);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+
+  .badge-pulse {
+    width: 8px; height: 8px;
+    background: var(--green);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: blink 1.5s ease-in-out infinite;
+  }
+  .badge-pulse.red { background: var(--red); }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero-headline {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-sub {
+    color: var(--white-dim);
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-trust {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--white-dim);
+  }
+
+  .trust-item svg {
+    width: 18px; height: 18px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* Hero visual */
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-card-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .day-preview-card {
+    background: var(--black-lighter);
+    border: 1px solid rgba(201, 169, 98, 0.2);
+    border-radius: 16px;
+    padding: 2rem;
+  }
+
+  .day-label {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .day-title {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--white-dim);
+    margin-bottom: 1.25rem;
+  }
+
+  .day-modules {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .day-modules span {
+    font-size: 0.9rem;
+    color: var(--white-dim);
+    padding: 0.4rem 0.75rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: 6px;
+    border-left: 2px solid var(--gold);
+    transition: all 0.2s;
+  }
+
+  .cert-preview-card {
+    background: rgba(34, 197, 94, 0.07);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cert-preview-card svg {
+    width: 28px; height: 28px;
+    color: var(--green);
+    flex-shrink: 0;
+  }
+
+  .cert-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .cert-sub {
+    font-size: 0.8rem;
+    color: var(--white-dim);
+    margin-top: 0.15rem;
+  }
+
+  .hero-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin-top: clamp(3rem, 6vw, 5rem);
+    opacity: 0.4;
+  }
+
+  /* ── FOR WHO ──────────────────────────────────────────── */
+  .pain-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .pain-card {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .pain-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+  }
+
+  .pain-icon {
+    width: 44px; height: 44px;
+    background: rgba(201, 169, 98, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .pain-icon svg {
+    width: 22px; height: 22px;
+    color: var(--gold);
+  }
+
+  .pain-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #333;
+    font-style: italic;
+  }
+
+  .for-who-cta {
+    text-align: center;
+    background: #fff;
+    border: 1px solid rgba(201, 169, 98, 0.3);
+    border-radius: 20px;
+    padding: 2.5rem;
+  }
+
+  .for-who-message {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 2rem;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ── AULAS ────────────────────────────────────────────── */
+  .aulas-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .aula-card {
+    background: var(--black-lighter);
+    border: 1px solid rgba(201, 169, 98, 0.12);
+    border-radius: 16px;
+    padding: 1.75rem 1.5rem;
+    transition: border-color 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .aula-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .aula-card:hover {
+    border-color: rgba(201, 169, 98, 0.4);
+    transform: translateY(-4px);
+  }
+
+  .aula-card:hover::before { opacity: 1; }
+
+  .aula-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .aula-day {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .aula-icon {
+    width: 28px; height: 28px;
+    color: rgba(201, 169, 98, 0.4);
+  }
+  .aula-icon svg { width: 100%; height: 100%; }
+
+  .aula-title {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .aula-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .aula-items li {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: var(--white-dim);
+    line-height: 1.5;
+  }
+
+  .aula-items li svg {
+    width: 14px; height: 14px;
+    color: var(--green);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+
+  .aulas-cta { text-align: center; }
+
+  /* ── INCLUDES ─────────────────────────────────────────── */
+  .includes-inner {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .includes-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .includes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .include-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.875rem 1.25rem;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: #222;
+    transition: border-color 0.2s;
+  }
+  .include-item:hover { border-color: var(--gold); }
+
+  .include-icon {
+    width: 36px; height: 36px;
+    background: rgba(201, 169, 98, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .include-icon svg {
+    width: 18px; height: 18px;
+    color: var(--gold);
+  }
+
+  /* Bonus card */
+  .bonus-card {
+    background: #0A0A0A;
+    border: 1px solid rgba(201, 169, 98, 0.25);
+    border-radius: 20px;
+    padding: 2.5rem;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bonus-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-dark));
+  }
+
+  .bonus-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    background: rgba(201, 169, 98, 0.12);
+    border: 1px solid rgba(201, 169, 98, 0.3);
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 1.25rem;
+  }
+
+  .bonus-icon {
+    width: 48px; height: 48px;
+    background: rgba(201, 169, 98, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+  .bonus-icon svg {
+    width: 24px; height: 24px;
+    color: var(--gold);
+  }
+
+  .bonus-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .bonus-desc {
+    font-size: 0.92rem;
+    color: var(--white-dim);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .bonus-weeks {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .week-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    padding: 0.5rem 0.875rem;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    border-left: 2px solid rgba(201, 169, 98, 0.5);
+  }
+
+  .week-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+
+  .week-item span:last-child {
+    color: var(--white-dim);
+  }
+
+  .bonus-note {
+    font-size: 0.85rem;
+    color: var(--white-dim);
+    line-height: 1.6;
+    padding: 1rem;
+    background: rgba(34, 197, 94, 0.06);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 10px;
+  }
+  .bonus-note strong { color: var(--white); }
+
+  /* ── AUTHORITY ────────────────────────────────────────── */
+  .authority-section { position: relative; overflow: hidden; }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .stat-box {
+    background: var(--black-lighter);
+    border: 1px solid rgba(201, 169, 98, 0.15);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .stat-box:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+
+  .stat-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-lbl {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--white-dim);
+  }
+
+  .authority-badges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .auth-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--black-light);
+    border: 1px solid rgba(201, 169, 98, 0.1);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    color: var(--white-dim);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .auth-badge:hover { border-color: rgba(201,169,98,0.3); color: var(--white); }
+
+  .auth-badge svg {
+    width: 22px; height: 22px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+
+  .bg-lines-authority {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .vline {
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(201,169,98,0.08), transparent);
+  }
+  .vline:nth-child(1) { left: 25%; }
+  .vline:nth-child(2) { left: 50%; }
+  .vline:nth-child(3) { left: 75%; }
+
+  /* ── FAQ ──────────────────────────────────────────────── */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.07);
+    border-radius: 16px;
+    padding: 1.75rem;
+    display: flex;
+    gap: 1rem;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .faq-item:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .faq-num {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 1;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+
+  .faq-q {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #0A0A0A;
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+
+  .faq-a {
+    font-size: 0.875rem;
+    color: #555;
+    line-height: 1.65;
+  }
+
+  /* ── FINAL CTA ────────────────────────────────────────── */
+  .final-cta-section {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: clamp(5rem, 12vw, 9rem) 0;
+  }
+
+  .final-cta-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .final-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(34,197,94,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34,197,94,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .final-cta-inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .final-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--red);
+    margin-bottom: 2rem;
+  }
+
+  .final-headline {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .final-sub {
+    color: var(--white-dim);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .final-note {
+    margin-top: 1.25rem;
+    font-size: 0.85rem;
+    color: var(--white-dim);
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────── */
+  .site-footer {
+    border-top: 1px solid rgba(201,169,98,0.1);
+    padding: 3rem 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-brand img { height: 80px; width: auto; object-fit: contain; }
+
+  .footer-tagline {
+    font-size: 0.8rem;
+    color: var(--white-dim);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+    color: var(--white-dim);
+    transition: color 0.2s;
+  }
+  .footer-link:hover { color: var(--gold); }
+  .footer-link svg { width: 16px; height: 16px; }
+
+  .footer-legal {
+    font-size: 0.78rem;
+    color: var(--white-dim);
+    opacity: 0.6;
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  /* ── RESPONSIVE ───────────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .aulas-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .stats-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+    .hero-visual {
+      display: none;
+    }
+    .includes-inner {
+      grid-template-columns: 1fr;
+    }
+    .authority-badges {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .aulas-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .pain-grid {
+      grid-template-columns: 1fr;
+    }
+    .faq-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-trust {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+    .footer-legal { text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .aulas-grid {
+      grid-template-columns: 1fr;
+    }
+    .stats-row {
+      grid-template-columns: 1fr 1fr;
+    }
+    .cta-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  // Reveal on scroll
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+</script>
