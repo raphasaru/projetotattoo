@@ -1,6 +1,6 @@
 # Aula 1 — Máquinas
 
-**Sábado (16h-19h30):** tipos de máquina, funcionamento de máquina e qual comprar. Configurações traço, sombra e pintura.
+**Sábado (16h-19h):** tipos de máquina, funcionamento de máquina e qual comprar. Configurações traço, sombra e pintura.
 
 - **Prática de traço:** técnicas, firmeza, velocidade, profundidade e prática pelo artificial.
 
@@ -8,7 +8,7 @@
 
 # Aula 2 — Tintas e Pigmentos
 
-**Sábado (16h-19h30):** tintas, pigmentos, cores, marcas e diluentes.
+**Sábado (16h-19h):** tintas, pigmentos, cores, marcas e diluentes.
 
 - **Prática de Preenchimento:** técnica Sólido Blocado
 - **Prática de Sombra:** diluição do preto, sombra suave e degradê
@@ -17,7 +17,7 @@
 
 # Aula 3 — Agulhas
 
-**Sábado (16h-19h30):** tipos de agulha, configurações, como usar e qual comprar.
+**Sábado (16h-19h):** tipos de agulha, configurações, como usar e qual comprar.
 
 - **Prática de Colorido:** técnicas de degradê, mistura de cores e transições
 
@@ -25,13 +25,13 @@
 
 # Aula 4 — Biossegurança
 
-**Sábado (16h-19h30):** cuidados básicos, contaminação cruzada, EPIs (Equipamentos de Proteção Individual).
+**Sábado (16h-19h):** cuidados básicos, contaminação cruzada, EPIs (Equipamentos de Proteção Individual).
 
 ---
 
 # Aula 5 — Produtos e Cosméticos
 
-**Sábado (16h-19h30):** marcas, stêncil, preparação da pele e cuidados pós-tattoo.
+**Sábado (16h-19h):** marcas, stêncil, preparação da pele e cuidados pós-tattoo.
 
 **Certificação**
 
