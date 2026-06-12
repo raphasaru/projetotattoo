@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Portfolio from '../components/Portfolio.astro';
 import Instructors from '../components/Instructors.astro';
 
-const WA_LINK = "https://api.whatsapp.com/send?phone=5511941721536&text=Gostaria%20de%20saber%20mais%20sobre%20o%20Fundamentos%20da%20Tatuagem";
+const WA_LINK = "https://api.whatsapp.com/send?phone=5511913473446&text=Gostaria%20de%20saber%20mais%20sobre%20o%20Fundamentos%20da%20Tatuagem";
 
 const aulas = [
   {
@@ -1482,4 +1482,13 @@ const stats = [
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Meta Pixel: marca clique nos CTAs de WhatsApp como evento "Contact"
+  document.querySelectorAll('a[href*="api.whatsapp.com"]').forEach(link => {
+    link.addEventListener('click', () => {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Contact', { content_name: 'fundamentos-da-tatuagem' });
+      }
+    });
+  });
 </script>
